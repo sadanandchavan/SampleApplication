@@ -55,15 +55,15 @@ public class JavaProgram2 {
 
 
 		jp.getMaxMinFirstThree(number);
-		
+
 		jp.getSecondHighest(number);
-		
+
 		jp.getCommonelement(number,number2);
-		
+
 		String msg ="Public static void main";
 		jp.reverseWordInString(msg);
 
-		//jp.checkPalindrome("sada");
+		jp.checkPalindrome("sada");
 
 		//jp.removeDuplicate(number);
 
@@ -78,18 +78,34 @@ public class JavaProgram2 {
 
 	}
 
-
-
+	/**
+	 * @param string
+	 */
+	private void checkPalindrome(String str) {
+		
+		System.out.println(IntStream.range(0, str.length()/2));
+		
+		 boolean isItPalindrome = IntStream.range(0, str.length()/2).
+	                noneMatch(i -> str.charAt(i) != str.charAt(str.length() - i -1));
+	          
+	        if (isItPalindrome)
+	        {
+	            System.out.println(str+" is a palindrome");
+	        }
+	        else
+	        {
+	            System.out.println(str+" is not a palindrome");
+	        }		
+	}
 
 	/**
 	 * @param msg
 	 */
 	private void reverseWordInString(String msg) {
-		
-	List <StringBuffer> lsitList=	Arrays.stream(msg.split(" ")).map(word->new StringBuffer(word).reverse()).collect(Collectors.toList());
+
+		List <StringBuffer> lsitList=	Arrays.stream(msg.split(" ")).map(word->new StringBuffer(word).reverse()).collect(Collectors.toList());
 		System.out.println("reverse each world "+lsitList);
 	}
-
 
 
 	/**
@@ -97,25 +113,19 @@ public class JavaProgram2 {
 	 * @param number2
 	 */
 	private void getCommonelement(List<Integer> number, List<Integer> number2) {
-		
+
 		List<Integer> list= number.stream().filter(number2::contains).collect(Collectors.toList());
 		System.out.println("Common element"+list);
-		
-	}
 
+	}
 
 	/**
 	 * @param number
 	 */
 	private void getSecondHighest(List<Integer> number) {
 		System.out.println("Second highest " +number.stream().sorted(Comparator.naturalOrder()).skip(1).collect(Collectors.toList()).get(0));
-		
+
 	}
-
-
-
-
-
 
 	/**
 	 * @param number
@@ -132,11 +142,6 @@ public class JavaProgram2 {
 
 	}
 
-
-
-
-
-
 	/**
 	 * @param a
 	 * @param b
@@ -146,11 +151,6 @@ public class JavaProgram2 {
 		System.out.println(Arrays.toString(c));
 
 	}
-
-
-
-
-
 
 	/**
 	 * @param number
